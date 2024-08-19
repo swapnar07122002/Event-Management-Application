@@ -1,0 +1,55 @@
+.filtered-events{
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  align-items: center;
+}
+
+.filtered-events h2{
+  font-size: 40px;
+}
+
+.search-form{
+  display: flex;
+  width: 50%;
+  justify-content: space-around;
+  margin-bottom: 20px;
+}
+
+.search-input{
+  height: 40px;
+  padding: 5px;
+}
+
+.search-btn{
+  height: 40px;
+  background-color: rgb(210, 38, 58);
+  color: white;
+  border: none;
+  width: 100px;
+  cursor: pointer;
+}
+
+.search-btn:hover{
+  background-color: rgb(157, 35, 49);
+  color: white;
+}
+
+@media screen and (max-width: 960px) {
+  .search-form {
+    margin-top: 20px;
+    flex-direction: column; /* Change to column layout on smaller screens */
+    align-items: stretch; /* Stretch items to full width */
+  }
+
+  .search-form input {
+    margin-right: 0; /* Remove right margin for inputs */
+    margin-bottom: 10px; 
+    /* Add bottom margin for spacing between inputs */
+  }
+
+  .search-btn {
+    width: 100%;
+     /* Make button full width */
+  }
+}

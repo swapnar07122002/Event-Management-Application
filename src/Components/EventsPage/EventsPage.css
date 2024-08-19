@@ -1,0 +1,61 @@
+.event_list_container{
+  padding: 20px;
+}
+
+.event-card-container{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around; 
+  list-style: none;
+  padding: 0;
+  flex: 0 0 calc(50% - 20px); 
+}
+
+
+.event_list_container ul{
+  list-style: none;
+}
+.event_list_container a {
+  text-decoration: none; 
+}
+
+.event_list_container a:hover{
+  text-decoration: none; 
+}
+
+.edit-btn{
+  height: 30px;
+  background-color: rgb(210, 38, 58);
+  color: white;
+  border: none;
+  width: 60px;
+  margin: 5px;
+  cursor: pointer;
+}
+
+.edit-btn:hover{
+  background-color: rgb(157, 35, 49);
+  color: white;
+}
+
+.create-btn{
+  height: 40px;
+  background-color: rgb(210, 38, 58);
+  color: white;
+  border: none;
+  width: 200px;
+  margin: 5px;
+  cursor: pointer;
+}
+
+.create-btn:hover{
+  background-color: rgb(157, 35, 49);
+  color: white;
+}
+
+
+@media screen and (max-width: 768px){
+  .event-card-container li {
+    flex-basis: calc(100% - 20px); /* Each card takes up full width on smaller screens */
+  }
+}
