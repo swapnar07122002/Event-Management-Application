@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 import './Signup.css';
+import { Link, useNavigate } from 'react-router-dom'
 import { api_uri } from '../../config';
 
 const Signup = () => {
+    const navigate = useNavigate();
     const[name,setName] = useState('');
     const[email,setEmail] = useState('');
     const[phone,setPhone] = useState('');
@@ -15,23 +17,62 @@ const Signup = () => {
       alert('fill the details')
     }
     sessionStorage.setItem('name',name);
-    window.location.reload();
+    // window.location.reload();
 
-    const response = await fetch(`${api_uri}/api/auth/register`,{
-      method:'POST',
-      headers:{
-        'content-type':'application/json'
-      },
-      body:JSON.stringify({
-        name:name,
-        email:email,
-        phone:phone,
-        password:password
-      })
-    })
-    const data = await response.json();
-    console.log(data);
-  }
+  //   const response = await fetch(`${api_uri}/api/auth/register`,{
+  //     method:'POST',
+  //     headers:{
+  //       'content-type':'application/json'
+  //     },
+  //     body:JSON.stringify({
+  //       name:name,
+  //       email:email,
+  //       phone:phone,
+  //       password:password
+  //     })
+  //   })
+  //   const data = await response.json();
+  //   console.log(data);
+  // }
+
+
+
+
+   try {
+      const response = await fetch(`${api_uri}/api/auth/register`, {
+        method: 'POST',
+        headers: {
+          'content-type': 'application/json',
+        },
+        body: JSON.stringify({
+          name,
+          email,
+          phone,
+          password,
+        }),
+      });
+
+      const data = await response.json();
+      console.log(data);
+
+      if (response.ok) {
+        // Optionally store data
+        sessionStorage.setItem('userId', data.userId);
+        sessionStorage.setItem('name', data.username || name);
+
+        // ✅ Navigate to logined page
+        navigate('/eventoptions');
+
+        // OR if you want them to login first:
+        // navigate('/login');
+      } else {
+        alert('Registration failed. Please try again.');
+      }
+    } catch (error) {
+      console.error('Error during registration:', error);
+    }
+  };
+
   return (
     <>
     <div className="signup_container">
